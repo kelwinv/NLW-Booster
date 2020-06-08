@@ -120,8 +120,8 @@ const Points = () =>{
               style={styles.map} 
               loadingEnabled={initialPosition[0] === 0}
               initialRegion={{
-                latitude: initialPosition[0],
-                longitude: initialPosition[1],
+                latitude: initialPosition[0] || 0,
+                longitude: initialPosition[1] || 0,
                 latitudeDelta: 0.0014,
                 longitudeDelta: 0.0014,
               }} 
@@ -132,9 +132,11 @@ const Points = () =>{
                 style={styles.mapMarker}
                 onPress={() => handleNavigateToDitDetail(point.id)}
                   coordinate={{
-                    latitude: point.latitude,
-                    longitude: point.longitude,
+                    latitude: point.latitude || 0,
+                    longitude: point.longitude || 0,
                 }}>
+
+
                   <View style={styles.mapMarkerContainer}>
                   <Image style={styles.mapMarkerImage} source={{ uri: point.image_url}} />
                     <Text style={styles.mapMarkerTitle}> {point.name} </Text>
